@@ -16,20 +16,17 @@ def semillas(request):
 
 def ofertas_view(request):
     # Lógica de la vista para la página de Ofertas
-    return render(request, 'ofertas.html')
+    return render(request, 'store/ofertas.html')
 
-def semillas_view(request):
-    # Lógica de la vista para la página de Semillas
-    return render(request, 'semillas.html')
 
 def parafernalia_view(request):
     # Lógica de la vista para la página de Parafernalia
-    return render(request, 'parafernalia.html')
+    return render(request, 'store/parafernalia.html')
 
 def cultivo_view(request):
     # Lógica de la vista para la página de Cultivo
-    return render(request, 'cultivo.html')
+    return render(request, 'store/cultivo.html')
 
 def contacto_view(request):
     # Lógica de la vista para la página de Contacto
-    return render(request, 'contacto.html')
+    return render(request, 'store/contacto.html')
