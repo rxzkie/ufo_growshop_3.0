@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <title>UFO GROWSHOP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <!-- mi CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- header -->
+  <header class="bg-light">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+                <a href="index.html">
+                    <img src="img/icono.png" alt="Logo de la página">
+                </a>
+            </div>
+            <div class="col-auto">
+                <a href="login.html" class="btn btn-primary mr-3">Iniciar sesión</a>
+                <a href="Carrito.html" class="btn btn-secondary">Carrito</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="Ofertas.html">Ofertas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Semillas.html">Semillas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="parafernalia.html">Parafernalia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Cultivo.html">Cultivo</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+
+  <div id="filtro-seleccion">
+    <div class="row">
+      <div class="col-lg-3">
+        <form>
+          <div class="form-group" id="form-group">
+            <label for="tipo_parafernalia">Tipo de parafernalia:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="bongs" value="option1">
+              <label class="form-check-label" for="bongs">
+                Bongs
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="pipas" value="option2">
+              <label class="form-check-label" for="pipas">
+                Pipas
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="grinders" value="option3">
+              <label class="form-check-label" for="grinders">
+                Grinders
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <a href="semilla1.html">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Semilla 1</h5>
+            <p class="card-text">Descripción de la semilla 1.</p>
+            <h6 class="card-subtitle mb-2 text-muted">$10.99</h6>
+            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <a href="semilla2.html">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Semilla 2</h5>
+            <p class="card-text">Descripción de la semilla 2.</p>
+            <h6 class="card-subtitle mb-2 text-muted">$12.99</h6>
+            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <a href="semilla3.html">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Semilla 3</h5>
+            <p class="card-text">Descripción de la semilla 3.</p>
+            <h6 class="card-subtitle mb-2 text-muted">$8.99</h6>
+            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Información de contacto</h5>
+          <p>¡Visítanos en nuestra tienda física o contáctanos a través de nuestras redes sociales!</p>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-geo-alt-fill me-2"></i> Dirección: Calle Falsa 123, Santiago</li>
+            <li><i class="bi bi-telephone-fill me-2"></i> Teléfono: +56 9 1234 5678</li>
+            <li><i class="bi bi-envelope-fill me-2"></i> Correo electrónico: info@growshop.com</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h5>Síguenos en nuestras redes</h5>
+          <ul class="list-unstyled">
+            <li><a href="#"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
+            <li><a href="#"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+            <li><a href="#"><i class="bi bi-twitter me-2"></i>Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      <p>Derechos reservados &copy; 2023 - Growshop.com</p>
+    </div>
+  </footer>
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Popper.js -->
+  <script src="https://unpkg.com/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
