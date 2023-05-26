@@ -4,6 +4,11 @@ from django.shortcuts import render
 
 # semillas
 
+
+def index(request):
+    context = {}
+    return render(request, 'store/index.html', context)
+
 def semillas(request):
-    context={}
+    context = {}
     return render(request, 'store/semillas.html', context)

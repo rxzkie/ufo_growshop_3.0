@@ -1,8 +1,7 @@
-
-
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.semillas, name='semillas'),
+    path('', views.index, name='index'),
+    path('', views.index, name='semillas'),
 ]

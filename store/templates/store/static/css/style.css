@@ -1,0 +1,398 @@
+/* Ajustar el ancho de los bordes del header utilizando el container,
+   esta sintaxis solo afecta al container del header */
+
+/* Estilos para dispositivos móviles del header */
+@media only screen and (max-width: 576px) {
+
+  header {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  header .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .col-auto {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  header a {
+    text-decoration: none;
+  }
+
+  header img {
+    height: 30px;
+  }
+
+  header .btn-primary {
+    margin-right: 5px;
+  }
+}
+
+/* Estilos para dispositivos de escritorio del header*/
+@media only screen and (min-width: 768px) {
+
+  header .col-auto:first-child {
+    margin-right: 0px;
+  }
+
+  header img {
+    width: 100px;
+    height: auto;
+    float: left
+  }
+
+  header {
+    height: 77px;
+  }
+}
+
+
+
+
+/* Estilos para el filtro */
+#filtro-seleccion {
+  width: 200px;
+  height: 30px;
+  font-size: 12px;
+  margin-right: 0px;
+  margin-left: 0px;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 767px) {
+  #filtro-seleccion {
+    width: auto;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    width: auto;
+    margin-left: 0;
+  }
+}
+
+/* Estilos para el texto del filtro tipo checkbox */
+#form-group {
+
+  width: 155px;
+  height: 20px;
+  font-size: 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+
+}
+
+.form-check {
+  margin-bottom: 5px;
+}
+
+.form-check-label {
+  font-size: 14px;
+}
+
+
+
+
+
+/*carrusel*/
+
+
+#myCarousel {
+  width: 100%;
+  height: 100%;
+}
+
+/* ajustar tamaño de carrusel atraves de la imagen */
+.carousel-inner img {
+  width: 953px;
+  height: 420px;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: transparent;
+  opacity: 0.7;
+  width: 30px;
+  height: 30px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+
+
+.navbar {
+  background-color: #f8f8ff;
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  img {
+    width: 60%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  img {
+    width: 80%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  img {
+    width: 90%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  img {
+    width: 100%;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  img {
+    width: 200%;
+  }
+}
+
+
+
+
+@media (max-width: 767px) {
+  #card {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  #card {
+    margin-top: 50px;
+  }
+}
+
+
+
+
+/* registro */
+
+#login-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#login-form .form-label {
+  font-weight: bold;
+}
+
+#login-form .btn-primary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+#login-form .text-center {
+  margin-top: 10px;
+}
+
+
+.error {
+  color: #ff0000;
+}
+
+
+
+#form1 {
+  margin-top: 50px;
+  width: 500px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+#form1 label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#form1 input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+#form1 button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#form1 button:hover {
+  background-color: #45a049;
+}
+
+#form1 .error-username,
+#form1 .error-password {
+  display: none;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+#form1 .success-message {
+  display: none;
+  color: green;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+
+/* contacto */
+.box {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #666;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+#enviado {
+  color: green;
+  margin-top: 10px;
+}
+
+#enviar-btn {
+  background-color: #008CBA;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#enviar-btn:hover {
+  background-color: #0077A3;
+}
+
+
+
+
+
+/* estilos para el card que se trae con jquery de firebase */
+
+.card {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  }
+  
+  .card:hover {
+  transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 200px;
+  object-fit: cover;
+  }
+  
+  .card-body {
+  padding: 20px;
+  }
+  
+  .card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  }
+  
+  .card-text {
+  margin-bottom: 0;
+  }
+  
+  .btn.btn-primary {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  }
+  
+  .btn.btn-primary:hover {
+  background-color: #3e8e41;
+  border-color: #3e8e41;
+  }
+
+  @media (max-width: 768px) {
+    #card-container .card {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
