@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-40zn=5lxkbcrs2owyjoyq79jgquyn0rt!0qc&+q!@2p5k9)ro0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-STATICFILES_DIRS =['C:/Users/renzo/Desktop/programacion web/proyecto_semestral/ufo_growshop_3.0/store/templates/store/static']
 
 ALLOWED_HOSTS = []
 
