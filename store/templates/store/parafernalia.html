@@ -96,49 +96,30 @@
     </div>
   </div>
 
+  <!-- items parafernalia -->
+
   <div class="container">
     <div class="row">
+      {% for item in parafernalia_list %}
       <div class="col-md-4 mb-4">
         <div class="card h-100">
-          <a href="semilla1.html">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          <a href="#">
+            <img src="{{ item.imagen.url }}" class="card-img-top" alt="{{ item.nombre }}">
           </a>
           <div class="card-body">
-            <h5 class="card-title">Semilla 1</h5>
-            <p class="card-text">Descripción de la semilla 1.</p>
-            <h6 class="card-subtitle mb-2 text-muted">$10.99</h6>
+            <h5 class="card-title">{{ item.nombre }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
             <a href="#" class="btn btn-primary">Agregar al carrito</a>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <a href="semilla2.html">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Semilla 2</h5>
-            <p class="card-text">Descripción de la semilla 2.</p>
-            <h6 class="card-subtitle mb-2 text-muted">$12.99</h6>
-            <a href="#" class="btn btn-primary">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <a href="semilla3.html">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">Semilla 3</h5>
-            <p class="card-text">Descripción de la semilla 3.</p>
-            <h6 class="card-subtitle mb-2 text-muted">$8.99</h6>
-            <a href="#" class="btn btn-primary">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
+  
+  
+  
+  
 
   <!-- Footer -->
   <footer class="bg-dark text-light">

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Parafernalia
+
 # Create your views here.
 
 # semillas
@@ -20,8 +22,10 @@ def ofertas_view(request):
 
 
 def parafernalia_view(request):
-    # Lógica de la vista para la página de Parafernalia
-    return render(request, 'store/parafernalia.html')
+    parafernalia_list = Parafernalia.objects.all()
+    context = {'parafernalia_list': parafernalia_list}
+
+    return render(request, 'store/parafernalia.html', context)
 
 def cultivo_view(request):
     # Lógica de la vista para la página de Cultivo
