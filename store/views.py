@@ -31,4 +31,4 @@ def cultivo_view(request):
 
 def contacto_view(request):
     # Lógica de la vista para la página de Contacto
-    return render(request, 'store/contacto.html')
+    return render(request, 'store/formulario.html')
