@@ -11,20 +11,18 @@ def index(request):
     context = {}
     return render(request, 'store/index.html', context)
 
-def semillas(request):
-    context = {}
-    return render(request, 'store/semillas.html', context)
-
 
 def ofertas_view(request):
     # Lógica de la vista para la página de Ofertas
     return render(request, 'store/ofertas.html')
 
+def semillas(request):
+    context = {}
+    return render(request, 'store/semillas.html', context)
 
 def parafernalia_view(request):
     parafernalia_list = Parafernalia.objects.all()
     context = {'parafernalia_list': parafernalia_list}
-
     return render(request, 'store/parafernalia.html', context)
 
 def cultivo_view(request):
