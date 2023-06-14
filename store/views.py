@@ -40,3 +40,11 @@ def login(request):
 def carrito(request):
     # Lógica de la vista para la página de Contacto
     return render(request, 'store/carrito.html')
+
+def staff(request):
+    # Lógica de la vista para la página de Contacto
+    return render(request, 'store/staff.html')
+
+def panel_view(request):
+    # Lógica de la vista para la página de panel
+    return render(request, 'store/panel.html')
