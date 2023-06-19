@@ -1,7 +1,5 @@
 from django.contrib import admin
+from .models import CatParaf, Parafernalia
 
-from .models import Parafernalia
-
-# Register your models here.
-
+admin.site.register(CatParaf)
 admin.site.register(Parafernalia)
