@@ -17,7 +17,10 @@ urlpatterns = [
     path('panel/', views.panel_view, name='panel'),
     path('agregar_proveedor/', views.agregar_proveedor, name='agregar_proveedor'),  
     
-    path('eliminar_proveedor/<str:pk>', views.eliminar_proveedor, name='eliminar_proveedor')
+    path('eliminar_proveedor/<str:pk>', views.eliminar_proveedor, name='eliminar_proveedor'),
+    path('buscar_proveedor/<str:pk>', views.buscar_proveedor, name='buscar_proveedor'),
+    path('modificar-proveedor/', views.modificar_proveedor, name='modificar_proveedor'),
+
 
 
 

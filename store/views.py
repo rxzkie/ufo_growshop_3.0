@@ -99,3 +99,55 @@ def eliminar_proveedor(request, pk):
     lista_proveedores = Proveedor.objects.all()
     context = {"proveedores": lista_proveedores, "mensaje": mensaje}
     return render(request, 'store/panel.html', context)
+
+
+from django.shortcuts import render
+from .models import Proveedor
+
+def buscar_proveedor(request, pk):
+    if pk != "":
+        try:
+            proveedor = Proveedor.objects.get(id_prov=pk)
+            context = {"proveedor": proveedor}
+            return render(request, 'store/editar_proveedor.html', context)
+        except Proveedor.DoesNotExist:
+            mensaje = "El proveedor NO existe"
+    else:
+        mensaje = "El proveedor NO existe"
+
+    lista_proveedores = Proveedor.objects.all()
+    context = {"proveedores": lista_proveedores, "mensaje": mensaje}
+    return render(request, 'store/panel.html', context)
+
+
+def modificar_proveedor(request):
+    if request.method == "POST":
+        id_prov = request.POST["id_prov"]
+        nombre = request.POST["nombre"]
+        fecha_compra = request.POST["fecha_compra"]
+        telefono = request.POST["telefono"]
+        email = request.POST["email"]
+        direccion = request.POST["direccion"]
+
+        try:
+            proveedor = Proveedor.objects.get(id_prov=id_prov)
+            proveedor.nombre = nombre
+            proveedor.fecha_compra = fecha_compra
+            proveedor.telefono = telefono
+            proveedor.email = email
+            proveedor.direccion = direccion
+            proveedor.save()
+
+            mensaje = "Se actualizó el proveedor"
+            lista_proveedores = Proveedor.objects.all()
+            context = {"proveedores": lista_proveedores, "mensaje": mensaje}
+            return render(request, 'store/panel.html', context)
+        except Proveedor.DoesNotExist:
+            mensaje = "El proveedor NO existe"
+            lista_proveedores = Proveedor.objects.all()
+            context = {"proveedores": lista_proveedores, "mensaje": mensaje}
+            return render(request, 'store/panel.html', context)
+    else:
+        lista_proveedores = Proveedor.objects.all()
+        context = {"proveedores": lista_proveedores}
+        return render(request, 'store/panel.html', context)
