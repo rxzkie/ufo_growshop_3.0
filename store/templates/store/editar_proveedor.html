@@ -78,7 +78,7 @@
                 {% csrf_token %}
                 <pre>ID Proveedor: <input type="text" name="id_prov" value="{{ proveedor.id_prov }}"></pre>
                 <pre>Nombre: <input type="text" name="nombre" value="{{ proveedor.nombre }}"></pre>
-                <pre>Fecha de Compra: <input type="date" name="fecha_compra" value="{{ proveedor.fecha_compra }}"></pre>
+                <pre>Fecha de Compra: <input type="date" name="fecha_compra" value="{{ proveedor.fecha_compra | date:'Y-m-d'}}">
                 <pre>Teléfono: <input type="text" name="telefono" value="{{ proveedor.telefono }}"></pre>
                 <pre>Email: <input type="email" name="email" value="{{ proveedor.email }}"></pre>
                 <pre>Dirección: <input type="text" name="direccion" value="{{ proveedor.direccion }}"></pre>

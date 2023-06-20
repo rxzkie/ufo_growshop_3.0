@@ -84,10 +84,6 @@ def agregar_proveedor(request):
 
 
 
-
-from django.shortcuts import render
-from .models import Proveedor
-
 def eliminar_proveedor(request, pk):
     try:
         proveedor = Proveedor.objects.get(id_prov=pk)
@@ -101,8 +97,6 @@ def eliminar_proveedor(request, pk):
     return render(request, 'store/panel.html', context)
 
 
-from django.shortcuts import render
-from .models import Proveedor
 
 def buscar_proveedor(request, pk):
     if pk != "":
