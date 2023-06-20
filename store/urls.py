@@ -15,6 +15,8 @@ urlpatterns = [
     path('carrito/', views.carrito, name='carrito'),
     path('staff/', views.staff, name='staff'),
      path('panel/', views.panel_view, name='panel'),
+      path('agregar_proveedor/', views.agregar_proveedor, name='agregar_proveedor'),  # Nueva URL para agregar proveedor
+
 
 
 ]

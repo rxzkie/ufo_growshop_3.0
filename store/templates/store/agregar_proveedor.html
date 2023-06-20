@@ -71,43 +71,34 @@
       </nav>
       
 
-      <div class="container mt-4">
-        <h1>Listado de proveedores</h1>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">ID Proveedor</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Fecha de compra</th>
-              <th scope="col">Teléfono</th>
-              <th scope="col">Email</th>
-              <th scope="col">Dirección</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for proveedor in proveedores %}
-            <tr>
-              <th scope="row">{{ forloop.counter }}</th>
-              <td>{{ proveedor.id_prov }}</td>
-              <td>{{ proveedor.nombre }}</td>
-              <td>{{ proveedor.fecha_compra }}</td>
-              <td>{{ proveedor.telefono }}</td>
-              <td>{{ proveedor.email }}</td>
-              <td>{{ proveedor.direccion }}</td>
-            </tr>
+      <div class="container">
+        <h3>Agregar Proveedor</h3>
+        <div class="form-container">
+            <form action="{% url 'agregar_proveedor' %}" method="POST">
+                {% csrf_token %}
+                <pre>ID Proveedor: <input type="text" name="id_prov"></pre>
+                <pre>Nombre: <input type="text" name="nombre"></pre>
+                <pre>Fecha de Compra: <input type="date" name="fecha_compra"></pre>
+                <pre>Teléfono: <input type="text" name="telefono"></pre>
+                <pre>Email: <input type="email" name="email"></pre>
+                <pre>Dirección: <input type="text" name="direccion"></pre>
+                <input type="submit" value="Agregar">
+            </form>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
             {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      
-      <a href="{% url 'agregar_proveedor' %}" class="btn btn-success">Agregar proveedor</a>
-      
-
-
-
-
-
+        {% endif %}
+        <a href="{% url 'panel' %}">Volver</a>
+    </div>
+    
+  
+    
 
 
 
@@ -142,4 +133,11 @@
 
 </body>
 
+</html>
+
+
+
+
+    
+</body>
 </html>

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect
 
 from .models import Parafernalia, Proveedor
 
@@ -54,38 +56,29 @@ def panel_view(request):
     context = {"proveedores": lista_proveedor}
     return render(request, 'store/panel.html', context)
 
-def agregar_proveedor(request):
-    if request.method != "POST":
-        lista_generos = Genero.objects.all()
-        context = {"generos":lista_generos}
-        return render(request,'venta/alumnos_add.html', context)
-    else:
-        #izq: variable local - der: input del formulario (name)
-        rut = request.POST["rut"]
-        nombre = request.POST["nombre"]
-        apePaterno = request.POST["apePat"]
-        apeMaterno = request.POST["apeMat"]
-        fechaNac = request.POST["fechaNac"]
-        genero = request.POST["genero"] #id_genero (value)
-        telefono = request.POST["telefono"]
-        mail = request.POST["email"]
-        direccion = request.POST["direccion"]
 
-        objGenero = Genero.objects.get(id_genero = genero)
-        #se crea onjeto alumno, izq: campo del model - der: variable local
-        objAlumno = Alumno.objects.create(
-            rut              = rut,
-            nombre           = nombre,
-            apellido_paterno = apePaterno,
-            apellido_materno = apeMaterno,
-            fecha_nacimiento = fechaNac,
-            id_genero        = objGenero,
-            telefono         = telefono,
-            email            = mail,
-            direccion        = direccion,
-            activo           = 1)
-        
-        objAlumno.save() #insert 
-        lista_generos = Genero.objects.all()
-        context = {"mensaje":"Se guardó alumno", "generos":lista_generos}
-        return render(request,'venta/alumnos_add.html', context)
+
+
+def agregar_proveedor(request):
+    if request.method == "POST":
+        id_prov = request.POST.get("id_prov")
+        nombre = request.POST.get("nombre")
+        fecha_compra = request.POST.get("fecha_compra")
+        telefono = request.POST.get("telefono")
+        email = request.POST.get("email")
+        direccion = request.POST.get("direccion")
+
+        proveedor = Proveedor(
+            id_prov=id_prov,
+            nombre=nombre,
+            fecha_compra=fecha_compra,
+            telefono=telefono,
+            email=email,
+            direccion=direccion
+        )
+
+        proveedor.save()
+        messages.success(request, 'Proveedor agregado exitosamente.')
+        return redirect('panel')
+
+    return render(request, 'store/agregar_proveedor.html')
