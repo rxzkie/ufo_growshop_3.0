@@ -57,8 +57,6 @@ def panel_view(request):
     return render(request, 'store/panel.html', context)
 
 
-
-
 def agregar_proveedor(request):
     if request.method == "POST":
         id_prov = request.POST.get("id_prov")
@@ -79,6 +77,5 @@ def agregar_proveedor(request):
 
         proveedor.save()
         messages.success(request, 'Proveedor agregado exitosamente.')
-        return redirect('panel')
 
     return render(request, 'store/agregar_proveedor.html')
