@@ -72,40 +72,30 @@
       
 
 
-    <div class="container mt-4">
-        <h1>Listado de ventas</h1>
+      <div class="container mt-4">
+        <h1>Listado de proveedores</h1>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Producto</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Precio unitario</th>
-                    <th scope="col">Total</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de compra</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Dirección</th>
                 </tr>
             </thead>
             <tbody>
+                {% for proveedor in proveedores %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Macetas de cerámica</td>
-                    <td>5</td>
-                    <td>$50</td>
-                    <td>$250</td>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ proveedor.nombre }}</td>
+                    <td>{{ proveedor.fecha_compra }}</td>
+                    <td>{{ proveedor.telefono }}</td>
+                    <td>{{ proveedor.email }}</td>
+                    <td>{{ proveedor.direccion }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Sustrato para cultivo</td>
-                    <td>2</td>
-                    <td>$30</td>
-                    <td>$60</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Luz LED de cultivo</td>
-                    <td>1</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
