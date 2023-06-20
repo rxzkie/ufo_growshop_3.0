@@ -71,41 +71,58 @@
       </nav>
       
 
+   
+      
+
+
       <div class="container mt-4">
         <h1>Listado de proveedores</h1>
+
         <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">ID Proveedor</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Fecha de compra</th>
-              <th scope="col">Teléfono</th>
-              <th scope="col">Email</th>
-              <th scope="col">Dirección</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for proveedor in proveedores %}
-            <tr>
-              <th scope="row">{{ forloop.counter }}</th>
-              <td>{{ proveedor.id_prov }}</td>
-              <td>{{ proveedor.nombre }}</td>
-              <td>{{ proveedor.fecha_compra }}</td>
-              <td>{{ proveedor.telefono }}</td>
-              <td>{{ proveedor.email }}</td>
-              <td>{{ proveedor.direccion }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
+            <thead>
+                <tr>
+                    <th scope="col">Acciones</th>
+                    <th scope="col">ID Proveedor</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de compra</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Dirección</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedores %}
+                <tr>
+                    <td>
+                        {% if proveedor.id_prov %}
+                        <form action="{% url 'eliminar_proveedor' pk=proveedor.id_prov %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        {% else %}
+                        ID de proveedor no válido
+                        {% endif %}
+                    </td>
+                    <td>{{ proveedor.id_prov }}</td>
+                    <td>{{ proveedor.nombre }}</td>
+                    <td>{{ proveedor.fecha_compra }}</td>
+                    <td>{{ proveedor.telefono }}</td>
+                    <td>{{ proveedor.email }}</td>
+                    <td>{{ proveedor.direccion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
-      </div>
-      
-      <a href="{% url 'agregar_proveedor' %}" class="btn btn-success">Agregar proveedor</a>
-      
+        
+        
+        
 
-
-
+        
+        
+    </div>
+    
+    <a href="{% url 'agregar_proveedor' %}" class="btn btn-success">Agregar proveedor</a>
+    
 
 
 

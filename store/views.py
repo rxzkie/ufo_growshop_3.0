@@ -79,3 +79,23 @@ def agregar_proveedor(request):
         messages.success(request, 'Proveedor agregado exitosamente.')
 
     return render(request, 'store/agregar_proveedor.html')
+
+
+
+
+
+
+from django.shortcuts import render
+from .models import Proveedor
+
+def eliminar_proveedor(request, pk):
+    try:
+        proveedor = Proveedor.objects.get(id_prov=pk)
+        proveedor.delete()
+        mensaje = "El proveedor se eliminó exitosamente."
+    except Proveedor.DoesNotExist:
+        mensaje = "El proveedor NO se eliminó."
+    
+    lista_proveedores = Proveedor.objects.all()
+    context = {"proveedores": lista_proveedores, "mensaje": mensaje}
+    return render(request, 'store/panel.html', context)

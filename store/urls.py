@@ -14,8 +14,10 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('carrito/', views.carrito, name='carrito'),
     path('staff/', views.staff, name='staff'),
-     path('panel/', views.panel_view, name='panel'),
-      path('agregar_proveedor/', views.agregar_proveedor, name='agregar_proveedor'),  # Nueva URL para agregar proveedor
+    path('panel/', views.panel_view, name='panel'),
+    path('agregar_proveedor/', views.agregar_proveedor, name='agregar_proveedor'),  
+    
+    path('eliminar_proveedor/<str:pk>', views.eliminar_proveedor, name='eliminar_proveedor')
 
 
 
