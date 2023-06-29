@@ -66,28 +66,16 @@
       </div>
     </nav>
 
-
-    <form method="post" action="{% url 'login' %}">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Login</button>
-    </form>
+    <body>
+      <form action="" method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">Login</button>
+      </form>
+  </body>
     
     
     
-    
-    
-
-    <div>
-
-
-      <h3>asdasdasdasdasd</h3>
-
-      <a href=""></a>
-
-      <hr>
-
-    </div>
     
            
     <!-- Footer -->
@@ -95,7 +83,7 @@
       <div class="container py-3">
         <div class="row">
           <div class="col-md-6">
-            <h5>Información de contacto</h5>
+            <h5>Información de contactoo</h5>
             <p>¡Visítanos en nuestra tienda física o contáctanos a través de nuestras redes sociales!</p>
             <ul class="list-unstyled">
               <li><i class="bi bi-geo-alt-fill me-2"></i> Dirección: Calle Falsa 123, Santiago</li>

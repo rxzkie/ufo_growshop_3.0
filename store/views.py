@@ -59,13 +59,13 @@ def staff(request):
 
 
 
-
+@login_required
 def panel_view(request):
     lista_proveedor = Proveedor.objects.all()
     context = {"proveedores": lista_proveedor}
     return render(request, 'store/panel.html', context)
 
-
+@login_required
 def agregar_proveedor(request):
     if request.method != "POST":
         return render(request, 'store/agregar_proveedor.html')
