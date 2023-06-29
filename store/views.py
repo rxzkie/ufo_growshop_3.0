@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.contrib import messages
-from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+
+
 
 from .models import Parafernalia, Proveedor
 
@@ -46,9 +50,15 @@ def carrito(request):
     return render(request, 'store/carrito.html')
 
 
-def staff(request):
 
-    return render(request, 'store/staff.html')
+
+def staff(request):
+    
+    
+    return render(request, 'store/staff.html',)
+
+
+
 
 
 def panel_view(request):

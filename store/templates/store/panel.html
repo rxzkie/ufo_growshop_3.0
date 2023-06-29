@@ -21,6 +21,7 @@
 <body>
 
 
+
     <!-- header -->
     <header class="bg-light">
         <div class="container">
@@ -77,6 +78,7 @@
 
     <div class="container mt-4">
         <h1>Listado de proveedores</h1>
+        {% if user.is_authenticated %}
 
         <table class="table">
             <thead>
@@ -116,6 +118,9 @@
                 </tr>
                 {% endfor %}
             </tbody>
+                {% else %}
+            <p>Debes iniciar sesión para ver el contenido.</p>
+            {% endif %}
         </table>
         
 

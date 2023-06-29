@@ -46,38 +46,33 @@ function enviar() {
 
 
 
-$(document).ready(function() {
-  $('#enviar').click(function(event) {
-    var username = $('#username').val();
-    var password = $('#password').val();
-    var errorMensaje = document.getElementById("error-mensaje");
+// $(document).ready(function() {
+//   $('#enviar').click(function(event) {
+//     var username = $('#username').val();
+//     var password = $('#password').val();
+//     var errorMensaje = document.getElementById("error-mensaje");
 
-    // Validación de campos
-    if (username == '') {
-      $('.error-username').html('Debe ingresar un nombre de usuario.').show();
-      event.preventDefault(); // Evita el envío del formulario
-      return false;
-    } else {
-      $('.error-username').hide();
-    }
+//     // Validación de campos
+//     if (username == '') {
+//       $('.error-username').html('Debe ingresar un nombre de usuario.').show();
+//       event.preventDefault(); // Evita el envío del formulario
+//       return false;
+//     } else {
+//       $('.error-username').hide();
+//     }
 
-    if (password == '') {
-      $('.error-password').html('Debe ingresar una contraseña.').show();
-      event.preventDefault(); // Evita el envío del formulario
-      return false;
-    } else {
-      $('.error-password').hide();
-    }
+//     if (password == '') {
+//       $('.error-password').html('Debe ingresar una contraseña.').show();
+//       event.preventDefault(); // Evita el envío del formulario
+//       return false;
+//     } else {
+//       $('.error-password').hide();
+//     }
 
-    // Envío de formulario
-    if (username == 'admin' && password == 'admin') {
-      // Si las credenciales son correctas, se enviará el formulario y se cargará la página panel.html
-    } else {
-      errorMensaje.innerHTML = "Credenciales incorrectas";
-      event.preventDefault(); // Evita el envío del formulario
-    }
-  });
-});
+ 
+//   });
+// });
+
 
 
   $(document).ready(function() {
