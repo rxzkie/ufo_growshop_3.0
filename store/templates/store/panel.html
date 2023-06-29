@@ -72,13 +72,18 @@
     </nav>
 
 
-
+    {% if user.is_authenticated %}
+    {{user.username}}
+    {% else %}
+        <a href="{% url 'login' %}">login</a>
+    {% endif %}
+    <a href="{% url 'logout' %}">logout</a>
 
 
 
     <div class="container mt-4">
         <h1>Listado de proveedores</h1>
-        {% if user.is_authenticated %}
+    
 
         <table class="table">
             <thead>
@@ -118,9 +123,7 @@
                 </tr>
                 {% endfor %}
             </tbody>
-                {% else %}
-            <p>Debes iniciar sesión para ver el contenido.</p>
-            {% endif %}
+          
         </table>
         
 

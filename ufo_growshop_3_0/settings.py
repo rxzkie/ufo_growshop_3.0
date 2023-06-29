@@ -82,7 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ufo_growshop_3_0.wsgi.application'
 
-LOGIN_REDIRECT_URL = "index"
+LOGIN_REDIRECT_URL = "panel"
 LOGOUT_REDIRECT_URL = "login"
 
 

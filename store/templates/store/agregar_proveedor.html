@@ -70,10 +70,16 @@
         </div>
       </nav>
       
-
       <div class="container">
         <h3>Agregar Proveedor</h3>
         <div class="form-container">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <label class="success">{{ message }}</label>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
             <form action="{% url 'agregar_proveedor' %}" method="POST">
                 {% csrf_token %}
                 <pre>ID Proveedor: <input type="text" name="id_prov"></pre>
@@ -85,19 +91,9 @@
                 <input type="submit" value="Agregar">
             </form>
         </div>
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                    <div class="alert alert-success" role="alert">
-                        {{ message }}
-                    </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
         <a href="{% url 'panel' %}">Volver</a>
     </div>
     
-  
     
 
 

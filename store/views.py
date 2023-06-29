@@ -1,10 +1,9 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-
-
 
 from .models import Parafernalia, Proveedor
 
@@ -68,7 +67,9 @@ def panel_view(request):
 
 
 def agregar_proveedor(request):
-    if request.method == "POST":
+    if request.method != "POST":
+        return render(request, 'store/agregar_proveedor.html')
+    else:
         id_prov = request.POST.get("id_prov")
         nombre = request.POST.get("nombre")
         fecha_compra = request.POST.get("fecha_compra")
@@ -76,7 +77,11 @@ def agregar_proveedor(request):
         email = request.POST.get("email")
         direccion = request.POST.get("direccion")
 
-        proveedor = Proveedor(
+        if not fecha_compra:
+            messages.error(request, 'La fecha de compra es requerida.')
+            return redirect('agregar_proveedor')  # Redirigir a la página de agregar proveedor si hay un error
+
+        proveedor = Proveedor.objects.create(
             id_prov=id_prov,
             nombre=nombre,
             fecha_compra=fecha_compra,
@@ -85,12 +90,9 @@ def agregar_proveedor(request):
             direccion=direccion
         )
 
-        proveedor.save()
         messages.success(request, 'Proveedor agregado exitosamente.')
-
-    return render(request, 'store/agregar_proveedor.html')
-
-
+        context = {'mensaje': 'Proveedor agregado exitosamente.'}
+        return render(request, 'store/agregar_proveedor.html', context)
 
 
 
