@@ -82,6 +82,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ufo_growshop_3_0.wsgi.application'
 
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "login"
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
