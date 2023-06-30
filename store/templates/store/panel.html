@@ -134,8 +134,13 @@
 
     </div>
 
-    <a href="{% url 'agregar_proveedor' %}" class="btn btn-success">Agregar proveedor</a>
 
+
+
+
+    {% if user.username == 'admin' %}
+    <a href="{% url 'agregar_proveedor' %}" class="btn btn-success">Agregar proveedor</a>
+    {% endif %}
 
 
 
