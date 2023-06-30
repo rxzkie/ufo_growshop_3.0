@@ -22,9 +22,8 @@ class Parafernalia(models.Model):
 
 
 
-
 class CatProve(models.Model):
-    id_cat_prove = models.AutoField(primary_key=True, db_column='idCatProve')
+    id_cat_prove = models.AutoField(primary_key=True)
     nombre_catprove = models.CharField(max_length=20, blank=False, null=False)
 
     def __str__(self):
@@ -34,7 +33,7 @@ class CatProve(models.Model):
 class Proveedor(models.Model):
     id_prov = models.CharField(primary_key=True, max_length=10)
     nombre = models.CharField(max_length=20)
-    id_cat_prove = models.ForeignKey(CatProve, on_delete=models.CASCADE)
+    id_cat_prove = models.ForeignKey(CatProve, on_delete=models.CASCADE, related_name='proveedores')
     fecha_compra = models.DateField(blank=False, null=False)
     telefono = models.CharField(max_length=45)
     email = models.EmailField(unique=True, max_length=100, blank=True, null=True)
