@@ -41,7 +41,7 @@ def contacto_view(request):
 
 def login(request):
 
-    return render(request, 'store/login.html')
+    return render(request, 'store/entrar.html')
 
 
 def carrito(request):
