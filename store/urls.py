@@ -3,10 +3,15 @@ from . import views
 
 from django.conf.urls.static import static
 
+from django.views.generic import TemplateView
+
+from django.urls import path
+
+
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('ofertas/', views.ofertas_view, name='ofertas'),
+        path('ofertas/', views.ofertas_view, name='ofertas'),
     path('semillas/', views.semillas, name='semillas'),
     path('parafernalia/', views.parafernalia_view, name='parafernalia'),
     path('cultivo/', views.cultivo_view, name='cultivo'),
