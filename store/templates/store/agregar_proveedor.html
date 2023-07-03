@@ -74,11 +74,11 @@
         <h3>Agregar Proveedor</h3>
         <div class="form-container">
             {% if messages %}
-                {% for message in messages %}
-                    {% if message.tags == 'success' %}
-                        <label class="success">{{ message }}</label>
-                    {% endif %}
-                {% endfor %}
+            {% for message in messages %}
+            {% if message.tags == 'success' %}
+            <label class="success">{{ message }}</label>
+            {% endif %}
+            {% endfor %}
             {% endif %}
             <form action="{% url 'agregar_proveedor' %}" method="POST">
                 {% csrf_token %}
@@ -88,6 +88,13 @@
                 <pre>Teléfono: <input type="text" name="telefono"></pre>
                 <pre>Email: <input type="email" name="email"></pre>
                 <pre>Dirección: <input type="text" name="direccion"></pre>
+                <pre>Categoría:
+                    <select name="id_cat_prove">
+                        {% for catprove in categorias %}
+                        <option value="{{ catprove.id_cat_prove }}">{{ catprove.nombre_catprove }}</option>
+                        {% endfor %}
+                    </select>
+                </pre>
                 <input type="submit" value="Agregar">
             </form>
         </div>

@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import Parafernalia, Proveedor
+from .models import Parafernalia, Proveedor,CatProve
 
 
 def index(request):
@@ -67,23 +67,23 @@ def panel_view(request):
 
 @login_required
 def agregar_proveedor(request):
-    if request.method != "POST":
-        return render(request, 'store/agregar_proveedor.html')
-    else:
+    if request.method == "POST":
         id_prov = request.POST.get("id_prov")
         nombre = request.POST.get("nombre")
         fecha_compra = request.POST.get("fecha_compra")
         telefono = request.POST.get("telefono")
         email = request.POST.get("email")
         direccion = request.POST.get("direccion")
+        id_cat_prove = request.POST.get("id_cat_prove")  # Obtener la categoría seleccionada
 
         if not fecha_compra:
             messages.error(request, 'La fecha de compra es requerida.')
-            return redirect('agregar_proveedor')  # Redirigir a la página de agregar proveedor si hay un error
+            return redirect('agregar_proveedor')
 
         proveedor = Proveedor.objects.create(
             id_prov=id_prov,
             nombre=nombre,
+            id_cat_prove_id=id_cat_prove,  # Asignar la categoría al proveedor
             fecha_compra=fecha_compra,
             telefono=telefono,
             email=email,
@@ -91,9 +91,11 @@ def agregar_proveedor(request):
         )
 
         messages.success(request, 'Proveedor agregado exitosamente.')
-        context = {'mensaje': 'Proveedor agregado exitosamente.'}
+        return redirect('agregar_proveedor')
+    else:
+        categorias = CatProve.objects.all()  # Obtener todas las categorías de proveedores
+        context = {'categorias': categorias}
         return render(request, 'store/agregar_proveedor.html', context)
-
 
 
 def eliminar_proveedor(request, pk):
