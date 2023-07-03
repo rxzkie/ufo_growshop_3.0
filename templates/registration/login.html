@@ -66,11 +66,25 @@
     
 
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Login</button>
-    </form>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div id="login-form" class="card">
+          <div class="card-header">
+            <h4 class="card-title">Login de Staff</h4>
+          </div>
+          <div class="card-body">
+            <form class="login-form" action="" method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
 
 

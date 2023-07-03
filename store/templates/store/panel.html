@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="col-auto">
-                    <a href="{% url 'entrar' %}" class="btn btn-primary mr-3">Iniciar sesión</a>
+                    <a href="{% url 'login' %}" class="btn btn-primary mr-3">Iniciar sesión</a>
                     <a href="{% url 'carrito' %}" class="btn btn-secondary">Carrito</a>
                 </div>
             </div>
@@ -102,6 +102,8 @@
                 {% for proveedor in proveedores %}
                 <tr>
                     <td>
+                        
+                        {% if user.username == 'admin' %}
                         {% if proveedor.id_prov %}
                         <form action="{% url 'eliminar_proveedor' pk=proveedor.id_prov %}" method="POST">
                             {% csrf_token %}
@@ -109,6 +111,7 @@
                         </form>
                         {% else %}
                         ID de proveedor no válido
+                        {% endif %}
                         {% endif %}
                     </td>
                     <td>{{ proveedor.id_prov }}</td>
@@ -118,7 +121,9 @@
                     <td>{{ proveedor.email }}</td>
                     <td>{{ proveedor.direccion }}</td>
                     <td>
+                        {% if user.username == 'admin' %}
                         <a href="{% url 'buscar_proveedor' pk=proveedor.id_prov %}" class="btn btn-primary">Modificar</a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
@@ -141,18 +146,6 @@
     {% if user.username == 'admin' %}
     <a href="{% url 'agregar_proveedor' %}" class="btn btn-success">Agregar proveedor</a>
     {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
