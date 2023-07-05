@@ -98,23 +98,25 @@
 
   <!-- items parafernalia -->
 
-
   <div class="container">
     <div class="row">
-        <div class="col-12 align-self-center"><h1 class="display-1">TIENDA</h1></div>
+        <div class="col-12 align-self-center">
+            <h1 class="display-1">TIENDA</h1>
+        </div>
     </div>
     <div class="row">
         <div class="col-8">
             <div class="row" style="padding: 10px 0;">
                 <div class="col-12">
                     <div class="row">
-                        {% for item in parafernalia_list  %}
+                        {% for item in parafernalia_list %}
                         <div class="col-6">
                             <div class="card" style="height: 10rem; width: 23rem; margin: 5px 0px;">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{item.nombre}}</h5>
-                                    <p class="card-text">{{item.precio}}</p>
-                                    <a href="{% url 'Add' item.idparaf %}" class="btn btn-primary">Agregar al carrito</a>
+                                    <h5 class="card-title">{{ item.nombre }}</h5>
+                                    <p class="card-text">{{ item.categoria }}</p>
+                                    <p class="card-text">{{ item.precio }}</p>
+                                    <a href="{% url 'agregar_producto' item.idparaf %}" class="btn btn-primary">Agregar al carrito</a>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +130,6 @@
         </div>
     </div>
 </div>
-
 
   <!-- Footer -->
   <footer class="bg-dark text-light">

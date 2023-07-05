@@ -9,19 +9,19 @@ class Carrito:
         else:
             self.carrito = carrito
 
-    def agregar(self, Parafernalia):
-        id = str(Parafernalia.idparaf)  # Asegúrate de usar el atributo correcto para el ID del producto
-        if id not in self.carrito.keys():
-            self.carrito[id] = {
-                "producto_id": Parafernalia.idparaf,  # Asegúrate de usar el atributo correcto para el ID del producto
-                "nombre": Parafernalia.nombre,
-                "acumulado": Parafernalia.precio,
-                "cantidad": 1,
-            }
-        else:
-            self.carrito[id]["cantidad"] += 1
-            self.carrito[id]["acumulado"] += Parafernalia.precio
-        self.guardar_carrito()
+    def agregar(self, producto, precio):
+            id = str(producto.id)
+            if id not in self.carrito.keys():
+                self.carrito[id] = {
+                    "producto_id": producto.id,
+                    "nombre": producto.nombre,
+                    "acumulado": Decimal(precio),
+                    "cantidad": 1,
+                }
+            else:
+                self.carrito[id]["cantidad"] += 1
+                self.carrito[id]["acumulado"] += Decimal(precio)
+            self.guardar_carrito()
 
     def guardar_carrito(self):
         self.session["carrito"] = self.carrito

@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
-from store import Carrito
+from store.Carrito import Carrito
+
 
 
 
@@ -168,33 +169,41 @@ def carrito(request):
 
     return render(request, 'store/carrito.html')
 
-
+from store.models import Parafernalia
 
 def parafernalia_view(request):
     parafernalia_list = Parafernalia.objects.all()
     context = {'parafernalia_list': parafernalia_list}
-    return render(request, 'store/parafernalia.html', context)
+    return render(request, "store/parafernalia.html", {'Parafernalia':Parafernalia})
 
+from decimal import Decimal
 
 def agregar_producto(request, idparaf):
     carrito = Carrito(request)
-    producto = Parafernalia.objects.get(id=idparaf)
-    carrito.agregar(Parafernalia)
+    parafernalia_obj = Parafernalia.objects.get(idparaf=idparaf)
+
+    # Convertir el objeto Decimal a una cadena de texto
+    precio = str(parafernalia_obj.precio)
+
+    # Agregar la parafernalia al carrito
+    carrito.agregar(parafernalia_obj, precio)
+
     return redirect("carrito")
+
 
 def eliminar_producto(request, idparaf):
     carrito = Carrito(request)
-    producto = Parafernalia.objects.get(id=idparaf)
+    Parafernalia = Parafernalia.objects.get(idparaf=idparaf)
     carrito.eliminar(Parafernalia)
-    return redirect("carrito")
+    return redirect("store/carrito.html")
 
 def restar_producto(request, idparaf):
     carrito = Carrito(request)
-    producto = Parafernalia.objects.get(id=idparaf)
+    Parafernalia = Parafernalia.objects.get(idparaf=idparaf)
     carrito.restar(Parafernalia)
-    return redirect("carrito")
+    return redirect("store/carrito.html")
 
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect("carrito")
+    return redirect("store/carrito.html")
