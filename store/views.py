@@ -8,6 +8,8 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from store import Carrito
 
+
+
 from .models import Parafernalia, Proveedor,CatProve
 
 
@@ -45,12 +47,6 @@ def contacto_view(request):
 def login(request):
 
     return render(request, 'store/entrar.html')
-
-
-def carrito(request):
-
-    return render(request, 'store/carrito.html')
-
 
 
 
@@ -167,11 +163,30 @@ def modificar_proveedor(request):
 
 
 
+
+def carrito(request):
+
+    return render(request, 'store/carrito.html')
+
+
+
+
 def agregar_producto(request, producto_id):
-    carrito = Carrito(request)
-    producto = Parafernalia.objects.get(id=producto_id)
-    carrito.agregar(producto)
-    return redirect("parafernalia")
+    carrito.agregar(producto=producto)
+
+    try:
+        producto = Parafernalia.objects.get(idparaf=producto_id)
+        carrito.agregar(producto)
+    except Parafernalia.DoesNotExist:
+        # Maneja el caso en el que el producto no existe
+        # Puedes mostrar un mensaje de error o redireccionar a otra página
+        pass
+
+    carrito_items = carrito.carrito
+    context = {'carrito': carrito_items}
+
+    return render(request, 'store/carrito.html', context)
+
 
 def eliminar_producto(request, producto_id):
     carrito = Carrito(request)

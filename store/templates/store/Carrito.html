@@ -70,54 +70,40 @@
 
 
 
-<!-- carrito.html -->
-<div class="container">
-  <h3>Carrito de compras</h3>
-  {% if carrito %}
-      <table>
-          <thead>
-              <tr>
-                  <th>Producto</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
-                  <th>Total</th>
-                  <th>Acciones</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for key, item in carrito.items %}
-                  <tr>
-                      <td>{{ item.nombre }}</td>
-                      <td>{{ item.cantidad }}</td>
-                      <td>{{ item.precio }}</td>
-                      <td>{{ item.acumulado }}</td>
-                      <td>
-                          <a href="{% url 'eliminar_producto' item.producto_id %}">Eliminar</a>
-                          <a href="{% url 'restar_producto' item.producto_id %}">Restar</a>
-                      </td>
-                  </tr>
-              {% endfor %}
-          </tbody>
-      </table>
-      <a href="{% url 'limpiar_carrito' %}">Limpiar carrito</a>
-  {% else %}
-      <p>No hay productos en el carrito.</p>
-  {% endif %}
-</div>
-
+  <div class="container">
+    <h3>Carrito de compras</h3>
+    {% if carrito %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, item in carrito.items %}
+                    <tr>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.cantidad }}</td>
+                        <td>{{ item.precio }}</td>
+                        <td>{{ item.acumulado }}</td>
+                        <td>
+                            <a href="{% url 'eliminar_producto' item.producto_id %}">Eliminar</a>
+                            <a href="{% url 'restar_producto' item.producto_id %}">Restar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'limpiar_carrito' %}">Limpiar carrito</a>
+    {% else %}
+        <p>No hay productos en el carrito.</p>
+    {% endif %}
+  </div>
   
-  <div id="blockcart-content" class="blockcart-content">
-    <div class="cart-title">
-    <span class="modal-title">Tu carrito</span>
-    <button type="button" id="js-cart-close" class="close">
-    <span>×</span>
-    </button>
-    <hr>
-    </div>
-    <span class="no-items">No hay más artículos en su carrito</span>
-    </div>
-
-
 
 
 

@@ -10,7 +10,7 @@ class CatParaf(models.Model):
 
 
 class Parafernalia(models.Model):
-    idparaf = models.CharField(primary_key=True, max_length=10)
+    idparaf = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=8, decimal_places=2)
     id_cat_paraf = models.ForeignKey(CatParaf, on_delete=models.CASCADE)
@@ -18,6 +18,7 @@ class Parafernalia(models.Model):
 
     def __str__(self):
         return self.nombre
+
 
 
 
