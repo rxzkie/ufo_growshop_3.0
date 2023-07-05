@@ -170,37 +170,31 @@ def carrito(request):
 
 
 
-
-def agregar_producto(request, producto_id):
-    carrito.agregar(producto=producto)
-
-    try:
-        producto = Parafernalia.objects.get(idparaf=producto_id)
-        carrito.agregar(producto)
-    except Parafernalia.DoesNotExist:
-        # Maneja el caso en el que el producto no existe
-        # Puedes mostrar un mensaje de error o redireccionar a otra página
-        pass
-
-    carrito_items = carrito.carrito
-    context = {'carrito': carrito_items}
-
-    return render(request, 'store/carrito.html', context)
+def parafernalia_view(request):
+    parafernalia_list = Parafernalia.objects.all()
+    context = {'parafernalia_list': parafernalia_list}
+    return render(request, 'store/parafernalia.html', context)
 
 
-def eliminar_producto(request, producto_id):
+def agregar_producto(request, idparaf):
     carrito = Carrito(request)
-    producto = Parafernalia.objects.get(id=producto_id)
-    carrito.eliminar(producto)
-    return redirect("parafernalia")
+    producto = Parafernalia.objects.get(id=idparaf)
+    carrito.agregar(Parafernalia)
+    return redirect("carrito")
 
-def restar_producto(request, producto_id):
+def eliminar_producto(request, idparaf):
     carrito = Carrito(request)
-    producto = Parafernalia.objects.get(id=producto_id)
-    carrito.restar(producto)
-    return redirect("parafernalia")
+    producto = Parafernalia.objects.get(id=idparaf)
+    carrito.eliminar(Parafernalia)
+    return redirect("carrito")
+
+def restar_producto(request, idparaf):
+    carrito = Carrito(request)
+    producto = Parafernalia.objects.get(id=idparaf)
+    carrito.restar(Parafernalia)
+    return redirect("carrito")
 
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect("parafernalia")
+    return redirect("carrito")

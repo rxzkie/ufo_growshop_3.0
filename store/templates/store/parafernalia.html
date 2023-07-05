@@ -98,29 +98,38 @@
 
   <!-- items parafernalia -->
 
+
   <div class="container">
     <div class="row">
-      {% for item in parafernalia_list %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <a href="#">
-            <img src="{{ item.imagen.url }}" class="card-img-top" alt="{{ item.nombre }}">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">{{ item.nombre }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
-  
-            <form action="{% url 'agregar_producto' item.idparaf %}" method="POST">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
+        <div class="col-12 align-self-center"><h1 class="display-1">TIENDA</h1></div>
     </div>
-  </div>
-  
+    <div class="row">
+        <div class="col-8">
+            <div class="row" style="padding: 10px 0;">
+                <div class="col-12">
+                    <div class="row">
+                        {% for item in parafernalia_list  %}
+                        <div class="col-6">
+                            <div class="card" style="height: 10rem; width: 23rem; margin: 5px 0px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{item.nombre}}</h5>
+                                    <p class="card-text">{{item.precio}}</p>
+                                    <a href="{% url 'Add' item.idparaf %}" class="btn btn-primary">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            {% include "store/carrito.html" %}
+        </div>
+    </div>
+</div>
+
+
   <!-- Footer -->
   <footer class="bg-dark text-light">
     <div class="container py-3">

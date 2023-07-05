@@ -11,7 +11,7 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.index, name='index'),
-        path('ofertas/', views.ofertas_view, name='ofertas'),
+    path('ofertas/', views.ofertas_view, name='ofertas'),
     path('semillas/', views.semillas, name='semillas'),
     path('parafernalia/', views.parafernalia_view, name='parafernalia'),
     path('cultivo/', views.cultivo_view, name='cultivo'),
@@ -27,10 +27,10 @@ urlpatterns = [
     path('buscar_proveedor/<str:pk>', views.buscar_proveedor, name='buscar_proveedor'),
     path('modificar-proveedor/', views.modificar_proveedor, name='modificar_proveedor'),
 
-   path('agregar/<int:producto_id>/', views.agregar_producto, name="agregar_producto"),
-    path('eliminar/<int:producto_id>/', views.eliminar_producto, name="eliminar_producto"),
-    path('restar/<int:producto_id>/', views.restar_producto, name="restar_producto"),
-    path('limpiar/', views.limpiar_carrito, name="limpiar_carrito"),
+    path('agregar/<int:idparaf>/', views.agregar_producto, name="Add"),
+    path('eliminar/<int:idparaf>/', views.eliminar_producto, name="Del"),
+    path('restar/<int:idparaf>/', views.restar_producto, name="Sub"),
+    path('limpiar/', views.limpiar_carrito, name="CLS"),
 
 
 
