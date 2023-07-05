@@ -1,9 +1,12 @@
+from itertools import product
 from django.contrib import messages
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
+
+from store import Carrito
 
 from .models import Parafernalia, Proveedor,CatProve
 
@@ -159,3 +162,30 @@ def modificar_proveedor(request):
         lista_proveedores = Proveedor.objects.all()
         context = {"proveedores": lista_proveedores}
         return render(request, 'store/panel.html', context)
+
+
+
+
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Parafernalia.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("parafernalia")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Parafernalia.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("parafernalia")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Parafernalia.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("parafernalia")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("parafernalia")

@@ -70,47 +70,41 @@
 
 
 
-    <!-- Modal para el carrito de compras -->
-<!-- <div class="modal fade" id="carrito-modal" tabindex="-1" aria-labelledby="carrito-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="carrito-modal-label">Carrito de compras</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <table class="table table-striped">
-            <thead>
+<!-- carrito.html -->
+<div class="container">
+  <h3>Carrito de compras</h3>
+  {% if carrito %}
+      <table>
+          <thead>
               <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio unitario</th>
-                <th scope="col">Subtotal</th>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Total</th>
+                  <th>Acciones</th>
               </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Producto 1</td>
-                <td>2</td>
-                <td>$50</td>
-                <td>$100</td>
-              </tr>
-              <tr>
-                <td>Producto 2</td>
-                <td>1</td>
-                <td>$25</td>
-                <td>$25</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Realizar compra</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
+          </thead>
+          <tbody>
+              {% for key, item in carrito.items %}
+                  <tr>
+                      <td>{{ item.nombre }}</td>
+                      <td>{{ item.cantidad }}</td>
+                      <td>{{ item.precio }}</td>
+                      <td>{{ item.acumulado }}</td>
+                      <td>
+                          <a href="{% url 'eliminar_producto' item.producto_id %}">Eliminar</a>
+                          <a href="{% url 'restar_producto' item.producto_id %}">Restar</a>
+                      </td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      <a href="{% url 'limpiar_carrito' %}">Limpiar carrito</a>
+  {% else %}
+      <p>No hay productos en el carrito.</p>
+  {% endif %}
+</div>
+
   
   <div id="blockcart-content" class="blockcart-content">
     <div class="cart-title">

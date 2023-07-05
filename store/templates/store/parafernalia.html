@@ -98,28 +98,29 @@
 
   <!-- items parafernalia -->
 
-  <div class="container">
-    <div class="row">
-      {% for item in parafernalia_list %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <a href="#">
-            <img src="{{ item.imagen.url }}" class="card-img-top" alt="{{ item.nombre }}">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">{{ item.nombre }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
-            <a href="#" class="btn btn-primary">Agregar al carrito</a>
-          </div>
+<!-- parafernalia.html -->
+<div class="container">
+  <div class="row">
+    {% for item in parafernalia_list %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="#">
+          <img src="{{ item.imagen.url }}" class="card-img-top" alt="{{ item.nombre }}">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nombre }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
+          <form action="{% url 'agregar_producto' item.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Agregar al carrito">
+          </form>
         </div>
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
   </div>
-  
-  
-  
-  
+</div>
+
 
   <!-- Footer -->
   <footer class="bg-dark text-light">
