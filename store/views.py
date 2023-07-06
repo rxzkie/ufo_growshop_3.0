@@ -182,6 +182,7 @@ def agregar_producto(request, idparaf):
     carrito = Carrito(request)
     parafernalia_obj = Parafernalia.objects.get(idparaf=idparaf)
 
+    # Convertir el objeto Decimal a una cadena de texto
     precio = int(parafernalia_obj.precio)
 
     # Agregar la parafernalia al carrito
@@ -196,9 +197,6 @@ def eliminar_producto(request, idparaf):
     carrito.eliminar(Parafernalia)
     return redirect("store/carrito.html")
 
-
-    
-
 def restar_producto(request, idparaf):
     carrito = Carrito(request)
     producto = Parafernalia.objects.get(idparaf=idparaf)
@@ -207,10 +205,11 @@ def restar_producto(request, idparaf):
 
 
    
+
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect("carrito")
+    return redirect("store/carrito.html")
 
 
 
