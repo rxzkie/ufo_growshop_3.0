@@ -1,4 +1,6 @@
 {% load static %}
+{% load grow_filter %}
+
 
 
 
@@ -69,54 +71,68 @@
   <div id="filtro-seleccion">
     <div class="row">
       <div class="col-lg-3">
-        <form>
-          <div class="form-group" id="form-group">
-            <label for="tipo_parafernalia">Tipo de parafernalia:</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="bongs" value="option1">
-              <label class="form-check-label" for="bongs">
-                Bongs
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="pipas" value="option2">
-              <label class="form-check-label" for="pipas">
-                Pipas
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="grinders" value="option3">
-              <label class="form-check-label" for="grinders">
-                Grinders
-              </label>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- items parafernalia -->
-
-  <div class="container">
-    <div class="row">
-      {% for item in parafernalia_list %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <a href="#">
-            <img src="{{ item.imagen.url }}" class="card-img-top" alt="{{ item.nombre }}">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">{{ item.nombre }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
-            <a href="{% url 'agregar_producto' item.idparaf %}" class="btn btn-primary">Agregar al carrito</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFiltro" aria-expanded="false" aria-controls="collapseFiltro">
+          Filtrar por categoría
+        </button>
+        <div class="collapse" id="collapseFiltro">
+          <div class="card card-body">
+            <form class="filtro-form" method="GET">
+              <div class="form-group" id="form-group">
+                <label for="tipo_parafernalia">Tipo de parafernalia:</label>
+                {% for categoria in categorias %}
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="categoria{{ categoria.id_cat_paraf }}" name="categoria" value="{{ categoria.nombre_tipo }}"
+                    {% if categoria.nombre_tipo in categoria_seleccionada %}checked{% endif %}>
+                  <label class="form-check-label" for="categoria{{ categoria.id_cat_paraf }}">
+                    {{ categoria.nombre_tipo }}
+                  </label>
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      {% endfor %}
     </div>
   </div>
   
+
+<!-- items parafernalia -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mb-4">
+        <ul class="list-inline">
+          {% for categoria in categorias %}
+          <li class="list-inline-item">
+            <a href="?categoria={{ categoria }}"
+            {% if categoria in categoria_seleccionada %}
+              class="active"
+            {% endif %}
+            >
+              {{ categoria }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+    </div>
+    {% for item in parafernalia_list %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="#">
+          <img src="{{ item.imagen.url }}" class="card-img-top" alt="{{ item.nombre }}">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nombre }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
+          <p>Categoría: {{ item.id_cat_paraf.nombre_tipo }}</p>
+          <a href="{% url 'agregar_producto' item.idparaf %}" class="btn btn-primary">Agregar al carrito</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
 
 
@@ -161,6 +177,9 @@
 
   <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+
+
 
 </body>
 

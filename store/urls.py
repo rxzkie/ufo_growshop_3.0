@@ -36,6 +36,8 @@ urlpatterns = [
 
     
     path('limpiar/', views.limpiar_carrito, name="CLS"),
+    path('parafernalia/filtrar/', views.filtrar_parafernalia, name='filtrar_parafernalia'),
+
 
 
 
