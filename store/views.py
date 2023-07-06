@@ -203,6 +203,14 @@ def restar_producto(request, idparaf):
     carrito.restar(producto)
     return redirect("carrito")
 
+    
+def sumar_producto(request, idparaf):
+    carrito = Carrito(request)
+    producto = Parafernalia.objects.get(idparaf=idparaf)
+    carrito.sumar(producto)
+    return redirect("carrito")
+
+
 
    
 

@@ -32,8 +32,12 @@ urlpatterns = [
     path('eliminar/<int:idparaf>/', views.eliminar_producto, name="Del"),
 
     path('restar/<int:idparaf>/', views.restar_producto, name="Sub"),
+    path('sumar/<int:idparaf>/', views.sumar_producto, name="sum"),
+
     
     path('limpiar/', views.limpiar_carrito, name="CLS"),
+
+
 
 
 

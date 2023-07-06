@@ -1,4 +1,10 @@
+
+
+from decimal import Decimal
+
+
 class Carrito:
+
     def __init__(self, request):
         self.request = request
         self.session = request.session
@@ -34,17 +40,23 @@ class Carrito:
             self.guardar_carrito()
 
 
+
     def restar(self, producto):
-            idparaf = str(producto.idparaf)
-            if idparaf in self.carrito:
-                if self.carrito[idparaf]['cantidad'] > 1:
-                    self.carrito[idparaf]['cantidad'] -= 1
-                    self.carrito[idparaf]['acumulado'] -= producto.precio
-                else:
-                    del self.carrito[idparaf]
-                self.guardar_carrito()
+        idparaf = str(producto.idparaf)
+        if idparaf in self.carrito:
+            if self.carrito[idparaf]['cantidad'] > 1:
+                self.carrito[idparaf]['cantidad'] -= 1
+                self.carrito[idparaf]['acumulado'] -= Decimal(str(producto.precio))
+            else:
+                del self.carrito[idparaf]
+            self.guardar_carrito()
 
-
+    def sumar(self, producto):
+        idparaf = str(producto.idparaf)
+        if idparaf in self.carrito:
+            self.carrito[idparaf]['cantidad'] += 1
+            self.carrito[idparaf]['acumulado'] += Decimal(str(producto.precio))
+            self.guardar_carrito()
 
     def limpiar(self):
             self.carrito = {}

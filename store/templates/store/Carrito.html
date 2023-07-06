@@ -82,7 +82,7 @@ KRRITO -->
   <div class="container">
     <div class="row">
       <div class="col-md-8 mx-auto">
-        <div class="card">
+        <div class="card1">
           <div class="card-header bg-primary text-white">
             <h5 class="card-title mb-0">CARRITO</h5>
           </div>
@@ -103,7 +103,7 @@ KRRITO -->
                     <td>{{value.nombre}}</td>
                     <td>{{value.precio}}</td>
                     <td>{{value.cantidad}}
-                      <a href="{% url 'agregar_producto' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+                      <a href="{% url 'sum' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
                       <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
                     </td>
                   </tr>
@@ -130,15 +130,12 @@ KRRITO -->
   
   <div class="row text-center">
     <div class="col-6"><a href="{% url 'CLS' %}" class="btn btn-danger">Limpiar</a></div>
+    <div id="paypal-button-container"></div>
    
 </div>
     
 
-    <div class="col-6">
-      <div id="paypal-button-container"></div>
-    </div>
-  </div>
-  
+ 
 
 
   <!-- Footer -->
