@@ -33,14 +33,16 @@ class Carrito:
             del self.carrito[id]
             self.guardar_carrito()
 
+
     def restar(self, producto):
-        id = int(producto.idparaf)
-        if id in self.carrito.keys():
-            self.carrito[id]["cantidad"] -= 1
-            self.carrito[id]["acumulado"] -= producto.precio
-            if self.carrito[id]["cantidad"] <= 0:
-                self.eliminar(producto)
-            self.guardar_carrito()
+            idparaf = str(producto.idparaf)
+            if idparaf in self.carrito:
+                if self.carrito[idparaf]['cantidad'] > 1:
+                    self.carrito[idparaf]['cantidad'] -= 1
+                    self.carrito[idparaf]['acumulado'] -= producto.precio
+                else:
+                    del self.carrito[idparaf]
+                self.guardar_carrito()
 
 
 
