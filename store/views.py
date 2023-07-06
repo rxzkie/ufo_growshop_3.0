@@ -188,7 +188,7 @@ def agregar_producto(request, idparaf):
     # Agregar la parafernalia al carrito
     carrito.agregar(parafernalia_obj, precio)
 
-    return redirect("carrito")
+    return redirect("parafernalia")
 
 
 def eliminar_producto(request, idparaf):
@@ -209,7 +209,7 @@ def restar_producto(request, idparaf):
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect("store/carrito.html")
+    return redirect("carrito")
 
 
 
