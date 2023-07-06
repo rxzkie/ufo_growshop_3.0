@@ -5,15 +5,15 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <head>
-    <title>UFO GROWSHOP</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-    <!-- mi CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<head>
+  <title>UFO GROWSHOP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- mi CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -22,49 +22,49 @@
 
   <header class="bg-light">
     <div class="container">
-        <div class="row justify-content-between align-items-center">
-            <div class="col-auto">
-                <a href="{% url 'index' %}">
-                    <img src="{% static 'img/icono.png' %}">
-                </a>
-            </div>
-            <div class="col-auto">
-                <a href="{% url 'entrar' %}" class="btn btn-primary mr-3">Iniciar sesión</a>
-                <a href="{% url 'carrito' %}" class="btn btn-secondary">Carrito</a>
-            </div>
+      <div class="row justify-content-between align-items-center">
+        <div class="col-auto">
+          <a href="{% url 'index' %}">
+            <img src="{% static 'img/icono.png' %}">
+          </a>
         </div>
+        <div class="col-auto">
+          <a href="{% url 'entrar' %}" class="btn btn-primary mr-3">Iniciar sesión</a>
+          <a href="{% url 'carrito' %}" class="btn btn-secondary">Carrito</a>
+        </div>
+      </div>
     </div>
-</header>
- <!-- Barra de navegación -->
+  </header>
+  <!-- Barra de navegación -->
 
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'ofertas' %}">Ofertas</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'semillas' %}">Semillas</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'parafernalia' %}">Parafernalia</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'cultivo' %}">Cultivo</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ofertas' %}">Ofertas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'semillas' %}">Semillas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'parafernalia' %}">Parafernalia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cultivo' %}">Cultivo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
       </form>
-  </div>
-</nav>
+    </div>
+  </nav>
 
   <div id="filtro-seleccion">
     <div class="row">
@@ -100,34 +100,25 @@
 
   <div class="container">
     <div class="row">
-        <div class="col-12 align-self-center">
-            <h1 class="display-1">TIENDA</h1>
+      {% for item in parafernalia_list %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <a href="#">
+            <img src="{{ item.imagen.url }}" class="card-img-top" alt="{{ item.nombre }}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ item.nombre }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
+            <a href="{% url 'agregar_producto' item.idparaf %}" class="btn btn-primary">Agregar al carrito</a>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
-    <div class="row">
-        <div class="col-8">
-            <div class="row" style="padding: 10px 0;">
-                <div class="col-12">
-                    <div class="row">
-                        {% for item in parafernalia_list %}
-                        <div class="col-6">
-                            <div class="card" style="height: 10rem; width: 23rem; margin: 5px 0px;">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ item.nombre }}</h5>
-                                    <p class="card-text">{{ item.categoria }}</p>
-                                    <p class="card-text">{{ item.precio }}</p>
-                                    <a href="{% url 'agregar_producto' item.idparaf %}" class="btn btn-primary">Agregar al carrito</a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-     
-    </div>
-</div>
+  </div>
+  
+
+
 
   <!-- Footer -->
   <footer class="bg-dark text-light">
