@@ -46,7 +46,7 @@ class Carrito:
         if idparaf in self.carrito:
             if self.carrito[idparaf]['cantidad'] > 1:
                 self.carrito[idparaf]['cantidad'] -= 1
-                self.carrito[idparaf]['acumulado'] -= Decimal(str(producto.precio))
+                self.carrito[idparaf]['acumulado'] -= float(producto.precio) 
             else:
                 del self.carrito[idparaf]
             self.guardar_carrito()
@@ -55,7 +55,7 @@ class Carrito:
         idparaf = str(producto.idparaf)
         if idparaf in self.carrito:
             self.carrito[idparaf]['cantidad'] += 1
-            self.carrito[idparaf]['acumulado'] += Decimal(str(producto.precio))
+            self.carrito[idparaf]['acumulado'] += float(producto.precio)  # Convertir a tipo float
             self.guardar_carrito()
 
     def limpiar(self):
