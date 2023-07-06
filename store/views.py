@@ -165,9 +165,24 @@ def modificar_proveedor(request):
 
 
 
-def carrito(request):
+from django.shortcuts import render
 
-    return render(request, 'store/carrito.html')
+def carrito(request):
+    carrito = Carrito(request)
+    total_carrito = carrito.session.get('total_carrito')  # Obtener el total del carrito de la sesión
+
+    # Realizar el cálculo del precio unitario
+    for item in carrito.carrito.values():
+        item['precio_unitario'] = item['acumulado'] / item['cantidad']
+
+    context = {
+        'carrito': carrito,
+        'total_carrito': total_carrito,
+    }
+
+    return render(request, 'store/carrito.html', context)
+
+
 
 from store.models import Parafernalia
 
@@ -177,13 +192,12 @@ def parafernalia_view(request):
     return render(request, 'store/parafernalia.html', context)
 
 from decimal import Decimal
-
 def agregar_producto(request, idparaf):
     carrito = Carrito(request)
     parafernalia_obj = Parafernalia.objects.get(idparaf=idparaf)
 
-    # Convertir el objeto Decimal a una cadena de texto
-    precio = int(parafernalia_obj.precio)
+    # Obtener el precio como float
+    precio = float(parafernalia_obj.precio)
 
     # Agregar la parafernalia al carrito
     carrito.agregar(parafernalia_obj, precio)
@@ -207,8 +221,9 @@ def restar_producto(request, idparaf):
 def sumar_producto(request, idparaf):
     carrito = Carrito(request)
     producto = Parafernalia.objects.get(idparaf=idparaf)
-    carrito.sumar(producto)
+    carrito.sumar(producto, producto.precio)  # Pasar el precio como argumento separado
     return redirect("carrito")
+
 
 
 
