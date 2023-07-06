@@ -30,7 +30,9 @@ urlpatterns = [
     path('agregar/<int:idparaf>/', views.agregar_producto, name="agregar_producto"),
 
     path('eliminar/<int:idparaf>/', views.eliminar_producto, name="Del"),
+
     path('restar/<int:idparaf>/', views.restar_producto, name="Sub"),
+    
     path('limpiar/', views.limpiar_carrito, name="CLS"),
 
 

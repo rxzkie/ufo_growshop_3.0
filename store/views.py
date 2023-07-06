@@ -174,7 +174,7 @@ from store.models import Parafernalia
 def parafernalia_view(request):
     parafernalia_list = Parafernalia.objects.all()
     context = {'parafernalia_list': parafernalia_list}
-    return render(request, "store/parafernalia.html", {'Parafernalia':Parafernalia})
+    return render(request, 'store/parafernalia.html', context)
 
 from decimal import Decimal
 
@@ -183,7 +183,7 @@ def agregar_producto(request, idparaf):
     parafernalia_obj = Parafernalia.objects.get(idparaf=idparaf)
 
     # Convertir el objeto Decimal a una cadena de texto
-    precio = str(parafernalia_obj.precio)
+    precio = int(parafernalia_obj.precio)
 
     # Agregar la parafernalia al carrito
     carrito.agregar(parafernalia_obj, precio)
@@ -199,11 +199,17 @@ def eliminar_producto(request, idparaf):
 
 def restar_producto(request, idparaf):
     carrito = Carrito(request)
-    Parafernalia = Parafernalia.objects.get(idparaf=idparaf)
-    carrito.restar(Parafernalia)
-    return redirect("store/carrito.html")
+    producto = Parafernalia.objects.get(idparaf=idparaf)
+    carrito.restar(producto)
+    return redirect("carrito")
 
+
+   
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect("store/carrito.html")
+    return redirect("carrito")
+
+
+
+    
